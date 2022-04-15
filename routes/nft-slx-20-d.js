@@ -10,12 +10,11 @@ router.get('/get-tokens/:address', async (req, res) => {
             method: "account_nfts",
             account: req.params.address
         })
-        console.log(JSON.stringify(nfts))
         client.disconnect();
-        return res.send({ message: 'success', data: nfts });
+        return res.status(200).send({ message: 'success', data: nfts });
     } catch (err) {
         client.disconnect();
-        res.send({ message: 'error', data: err });
+        res.status(500).send({ message: 'error', data: err });
     }
 });
 
@@ -36,10 +35,10 @@ router.post('/token-mint', async (req, res) => {
             account: wallet.classicAddress
         });
         client.disconnect()
-        return res.send({ message: 'success', data: nfts, "Balance changes": xrpl.getBalanceChanges(tx.result.meta) });
+        return res.status(201).send({ message: 'success', data: nfts, "Balance changes": xrpl.getBalanceChanges(tx.result.meta) });
     } catch (err) {
         console.log("Error:", err);
-        res.send({ message: 'error', data: err });
+        res.status(500).send({ message: 'error', data: err });
     }
 });
 
@@ -52,12 +51,12 @@ router.get('/get-balance/:address', async (req, res) => {
     } catch (err) {
         console.log("Error:", err);
         client.disconnect();
-        return res.status(400).send({ message: 'error', data: err });
+        return res.status(500).send({ message: 'error', data: err });
     }
 });
 
 router.get('/test', async (req, res) => {
-    res.status(200).send({ message: 'success', data: "Not implemented yet" });
+    res.status(201).send({ message: 'success', data: "Not implemented yet" });
 });
 
 module.exports = router;

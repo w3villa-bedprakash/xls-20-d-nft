@@ -4,6 +4,7 @@
   "description": "Simple testing example",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "./node_modules/mocha/bin/mocha ./test/**/*"
   },
   "author": "",
