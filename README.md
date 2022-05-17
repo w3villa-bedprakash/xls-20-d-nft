@@ -1,9 +1,9 @@
 # xls-20-d-nft
 
-*prerequisite
+##prerequisite
 1) node js should be installed in your machine
 
-*set steps
+##execution
 1) just clone repository
 2) Navigate to `assignment` directory
 3) Execute command `npm i` to install dependencies
